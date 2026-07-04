@@ -6,7 +6,6 @@ class Solution {
         for(int i = 0 ; i<s.length();i++){
             map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
         }
-        System.out.println(map);
         for(char ele : map.keySet()){
             int freq = map.get(ele);
             if(freq%2==0){ //even 
