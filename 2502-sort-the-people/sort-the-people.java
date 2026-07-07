@@ -5,7 +5,6 @@ class Solution {
             map.put(heights[i],names[i]);
         }
         Arrays.sort(heights);
-        System.out.println(Arrays.toString(heights));
         int j = 0;
         for(int i=heights.length-1;i>=0;i--){
             names[j++] = map.get(heights[i]);
