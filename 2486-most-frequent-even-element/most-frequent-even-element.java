@@ -8,15 +8,15 @@ class Solution {
         System.out.println(map);
         for(int i:map.keySet()){
             if(i%2==0){ //check even 
-                if(map.get(i)>max){ //
-                    ans = i;
-                    max = map.get(i);
+                if(map.get(i)>=max){ //
+                    if(map.get(i)==max){ //
+                        ans = Math.min(ans,i);
+                        max = map.get(i);
+                    }else{
+                        ans = i;
+                        max = map.get(i);
+                    }   
                 }
-                if(map.get(i)==max){ //
-                    ans = Math.min(ans,i);
-                    max = map.get(i);
-                }
-                
             }
         }
         return ans<Integer.MAX_VALUE? ans:-1;
