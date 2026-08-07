@@ -4,14 +4,13 @@ class Solution {
         for(int i=1;i<=n;i++){
             list.add(i);
         }
-        k = k-1;
-        int i = 0;
-        return ans(list,k,i);
+        return solve(list,0,k-1);
     }
-    public static int ans(ArrayList list,int k,int i){
-        if(list.size()==1) return (Integer)list.get(0);
-        i = (i+k)%list.size();
-        list.remove(i);
-        return ans(list,k,i);
+    public Integer solve(ArrayList arr,int i,int k){
+        if(arr.size()==1) return (Integer)arr.get(0);
+        i = (i+k)%arr.size();
+        arr.remove(i);
+        return solve(arr,i,k);
+
     }
 }
