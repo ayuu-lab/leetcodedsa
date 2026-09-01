@@ -4,11 +4,8 @@ class Solution {
         int len = nums.length;
         for(int i=0;i<len;i++){
             pq.offer(nums[i]);
+            if(pq.size()>k) pq.poll();
         }
-        while(pq.size()!=k){
-            pq.poll();
-        }
-        System.out.println(pq);
         return pq.peek();
 
     }
