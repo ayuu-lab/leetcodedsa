@@ -1,31 +1,25 @@
-import java.util.*;
 class Solution {
-    public void func(int[] nums,int i,List<List<Integer>> ans) {
-        if(i==nums.length){
-            List<Integer> temp = new ArrayList<>();
-            for (int num : nums) {
-                temp.add(num);
-            }
-            ans.add(temp);
+    public void func(int[] nums, List<List<Integer>> ans, List<Integer> temp, boolean[] used, int i) {
+        if (temp.size() == nums.length) {
+            ans.add(new ArrayList<>(temp));
             return;
         }
-        for(int j=i;j<nums.length;j++){
-            swap(nums,i,j);
-            func(nums,i+1,ans);
-            swap(nums,i,j);
+        for (int j = 0; j < nums.length; j++) {
+            if (!used[j]) {
+                used[j] = true;
+                temp.add(nums[j]);
+                func(nums, ans, temp, used, j);
+                temp.remove(temp.size() - 1);
+                used[j] = false;
+            }
         }
-        return;
-    }
-    public void swap(int []arr,int i,int j){
-        int temp = arr[i];
-        arr[i]=arr[j];
-        arr[j]=temp;
-        return;
     }
 
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
-        func(nums,0,ans);
+        List<Integer> temp = new ArrayList<>();
+        boolean[] used = new boolean[nums.length];
+        func(nums, ans, temp, used, 0);
         return ans;
     }
 }
